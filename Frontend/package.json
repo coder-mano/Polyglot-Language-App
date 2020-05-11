@@ -1,0 +1,49 @@
+{
+  "name": "databaza",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@sentry/browser": "^5.15.0",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "firebase": "^7.14.2",
+    "font-awesome": "^4.7.0",
+    "joi-browser": "^13.4.0",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.15",
+    "prettier": "^2.0.3",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-event-observer": "^0.5.11",
+    "react-redux-firebase": "^3.4.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^3.4.1",
+    "react-toastify": "^5.5.0",
+    "recompose": "^0.30.0",
+    "redux": "^4.0.5",
+    "redux-observable": "^1.2.0",
+    "update": "^0.7.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "case-sensitive-paths-webpack-plugin": "^2.3.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
