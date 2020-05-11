@@ -1,0 +1,6 @@
+framework module Pods_zct_assignment {
+  umbrella header "Pods-zct-assignment-umbrella.h"
+
+  export *
+  module * { export * }
+}
