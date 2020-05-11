@@ -11,9 +11,10 @@ import UIKit
 class LanguageTableViewController: UITableViewController {
     
     // tmp test values
-    let flags = ["🇫🇮","🇫🇮","🇫🇮","🇫🇮","🇫🇮","🇫🇮","🇫🇮","🇫🇮","🇫🇮","🇫🇮","🇫🇮","🇫🇮"]
-    let languages = ["Spanish","German","French","Spanish","German","French","Spanish","German","French"]
+    let flags = ["🇪🇸","🇫🇷","🇧🇪","🇮🇪","🇸🇪","🇰🇷","🇷🇺","🇹🇷","🇵🇱"]
+    let languages = ["Spanish","French","German","Italian","Swedish","Korean","Russian","Turkish","Polish"]
        
+  //  it,sv, ko, ru, tr, pl
     override func viewDidLoad() {
         super.viewDidLoad()
 

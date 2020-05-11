@@ -29,6 +29,11 @@ PODS:
     - PromisesObjC (~> 1.2)
   - GoogleUtilities/Logger (6.6.0):
     - GoogleUtilities/Environment
+  - IBMSwiftSDKCore (1.0.0)
+  - IBMWatsonAssistantV2 (3.4.0):
+    - IBMSwiftSDKCore (~> 1.0.0)
+  - IBMWatsonLanguageTranslatorV3 (3.4.0):
+    - IBMSwiftSDKCore (~> 1.0.0)
   - leveldb-library (1.22)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -39,6 +44,8 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Database
+  - IBMWatsonAssistantV2 (~> 3.4.0)
+  - IBMWatsonLanguageTranslatorV3 (~> 3.4.0)
 
 SPEC REPOS:
   trunk:
@@ -51,6 +58,9 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
+    - IBMSwiftSDKCore
+    - IBMWatsonAssistantV2
+    - IBMWatsonLanguageTranslatorV3
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -65,10 +75,13 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 061fe7d9b476710e3cd8ea51e8e07d8b67c2b420
   GoogleDataTransportCCTSupport: 0f39025e8cf51f168711bd3fb773938d7e62ddb5
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
+  IBMSwiftSDKCore: 54ad77b03a4d27b218ba514580197db3b89a96ca
+  IBMWatsonAssistantV2: 4cca24276204edc3e38d1cce58a4f2c346ae9dd2
+  IBMWatsonLanguageTranslatorV3: a6a06a2e4e56a8b0668c0a67ee2722861f5c9b17
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
 
-PODFILE CHECKSUM: 1c838649e77d715a1922c6164592ddeb2f91ebb7
+PODFILE CHECKSUM: 14d5250e7a8c636183b5a97142a3793cee44b39e
 
 COCOAPODS: 1.8.4

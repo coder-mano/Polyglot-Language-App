@@ -5,7 +5,9 @@ target 'zct-assignment' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'Firebase/Database'
-	
+  pod 'IBMWatsonLanguageTranslatorV3', '~> 3.4.0'
+  pod 'IBMWatsonAssistantV2', '~> 3.4.0'
+
   # Pods for zct-assignment
 
 end

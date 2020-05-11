@@ -10,17 +10,16 @@ import UIKit
 import Firebase
 import AVFoundation
 
-
 class GameController: UIViewController {
     
     public var languageId: Int?
     var speechRecognizer = SpeechRecognition()
-    
+
     var db_size: Int?
     var wordForTranslate: String?
     var wordImage: String?
     var peopleAssets = ["🧕","👮‍♀️","👷‍♀️","🕵️‍♀️","👩‍⚕️","👩‍🌾","👩‍🍳","👩‍🎓","👩‍🏫","👩‍💻","👩‍💼","👩‍🎨","👩‍🚒","👩‍✈️","👩‍🚀","👩‍⚖️","🧙‍♀️","🧛‍♀️"]
-    
+    var locale = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +34,9 @@ class GameController: UIViewController {
         
         getRandomWord()
         generateUI()
-        
-        let life = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItems = [life]
+        locale = getLocale(id: languageId!)
+        navigationItem.rightBarButtonItem = getFlagIcon(id: languageId!)
+        navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     var background: UIView!
@@ -91,13 +90,15 @@ class GameController: UIViewController {
     }
     
     func firCompletion(_ completion:String) {
+    
         print("Random word \(completion.prefix(1))")
         wordImage = String(completion.prefix(1))
         print("Random word \(wordImage)")
         
-        wordForTranslate = String(completion.dropFirst())
-        readWord()
-        (view.viewWithTag(111) as? UILabel)?.text = wordForTranslate
+        translate(word: String(completion.dropFirst()))
+
+        //readWord()
+        //(view.viewWithTag(111) as? UILabel)?.text = wordForTranslate
         (view.viewWithTag(112) as? UILabel)?.text = wordImage
         
     }
@@ -108,7 +109,7 @@ class GameController: UIViewController {
     
     @objc func readWord(){
         let utterance = AVSpeechUtterance(string: wordForTranslate ?? "")
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = AVSpeechSynthesisVoice(language: locale)
         let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
     }
@@ -199,7 +200,7 @@ class GameController: UIViewController {
             tapToSpeak.backgroundColor = .red
             speechRecognizer = SpeechRecognition()
             speechRecognizer.parrentController = self
-            speechRecognizer.speecchRecognition(word: wordForTranslate!)
+            speechRecognizer.speecchRecognition(word: wordForTranslate!,locale: locale)
             
         }else{
             tapToSpeak.backgroundColor = .blue

@@ -17,9 +17,9 @@ public class SpeechRecognition {
     private var player: AVAudioPlayer?
     var audioSession = AVAudioSession.sharedInstance()
     
-    public func speecchRecognition(word: String){
+    public func speecchRecognition(word: String, locale: String){
         
-        let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en"))!
+        let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: locale))!
         
         if !audioEngine.isRunning {
             

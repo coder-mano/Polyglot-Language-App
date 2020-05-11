@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E525806D2468B65300B7A74A /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E525806C2468B65300B7A74A /* Translation.swift */; };
 		E586699A2467EAA400733DC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58669992467EAA400733DC6 /* AppDelegate.swift */; };
 		E586699C2467EAA400733DC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E586699B2467EAA400733DC6 /* SceneDelegate.swift */; };
 		E58669A12467EAA400733DC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E586699F2467EAA400733DC6 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		D52B39D05B591C348FD0F3BC /* Pods-zct-assignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zct-assignment.release.xcconfig"; path = "Target Support Files/Pods-zct-assignment/Pods-zct-assignment.release.xcconfig"; sourceTree = "<group>"; };
 		DE47462538D1E0F829E0CC21 /* Pods_zct_assignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zct_assignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E525806C2468B65300B7A74A /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		E58669962467EAA400733DC6 /* zct-assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zct-assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58669992467EAA400733DC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E586699B2467EAA400733DC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				E58669A72467EAA600733DC6 /* LaunchScreen.storyboard */,
 				E58669AA2467EAA600733DC6 /* Info.plist */,
 				E58669A22467EAA400733DC6 /* zct_assignment.xcdatamodeld */,
+				E525806C2468B65300B7A74A /* Translation.swift */,
 				E58669B22467F97800733DC6 /* LanguageTableViewController.swift */,
 				E58669B42468015F00733DC6 /* GameController.swift */,
 				E58669B6246804A000733DC6 /* GoogleService-Info.plist */,
@@ -223,6 +226,7 @@
 				E58669B9246836DB00733DC6 /* SpeechRecognition.swift in Sources */,
 				E58669B52468015F00733DC6 /* GameController.swift in Sources */,
 				E58669B32467F97800733DC6 /* LanguageTableViewController.swift in Sources */,
+				E525806D2468B65300B7A74A /* Translation.swift in Sources */,
 				E586699A2467EAA400733DC6 /* AppDelegate.swift in Sources */,
 				E586699C2467EAA400733DC6 /* SceneDelegate.swift in Sources */,
 			);
