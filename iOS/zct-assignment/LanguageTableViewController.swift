@@ -11,14 +11,15 @@ import UIKit
 class LanguageTableViewController: UITableViewController {
     
     // tmp test values
-    let flags = ["🇪🇸","🇫🇷","🇧🇪","🇮🇪","🇸🇪","🇰🇷","🇷🇺","🇹🇷","🇵🇱"]
-    let languages = ["Spanish","French","German","Italian","Swedish","Korean","Russian","Turkish","Polish"]
+    let flags = ["🇪🇸","🇫🇷","🇧🇪","🇮🇹","🇸🇪","🇰🇷","🇷🇺","🇹🇷","🇭🇺","🇵🇱","🇬🇷","🇩🇰","🇳🇱","🇮🇳","🇯🇵","🇧🇷","🇻🇳","🇸🇰","🇮🇪","🇮🇱","🇨🇿","🇷🇴","🇮🇩"]
+    let languages = ["Spanish","French","German","Italian","Swedish","Korean","Russian","Turkish","Hungarian","Polish","Greek","Danish", "Dutch","Hindi","Japanese","Portuguese","Vietnamese","Slovak","Irish", "Hebrew","Czech","Romanian","Indonesian"]
        
-  //  it,sv, ko, ru, tr, pl
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
 
     // MARK: - Table view data source
@@ -28,7 +29,7 @@ class LanguageTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return languages.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

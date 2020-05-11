@@ -78,7 +78,7 @@ public class SpeechRecognition {
                     recognitionRequest = nil
                 }
             }
-            
+            // recognition start
             audioEngine.prepare()
             do {
                 try audioEngine.start()

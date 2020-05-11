@@ -14,11 +14,14 @@ class GameController: UIViewController {
     
     public var languageId: Int?
     var speechRecognizer = SpeechRecognition()
-
+    
+    let femaleAssets = ["🧕","👮‍♀️","👷‍♀️","🕵️‍♀️","👩‍⚕️","👩‍🌾","👩‍🍳","👩‍🎓","👩‍🏫","👩‍💻","👩‍💼","👩‍🎨","👩‍🚒","👩‍✈️","👩‍🚀","👩‍⚖️","🧙‍♀️","🧛‍♀️"]
+    let maleAssets = ["👷‍♂️","👨‍🌾","👨‍🌾","👨‍🍳","👨‍🏫","👨‍💻","👨‍🔧","👨‍🚒","👨‍🚀","👨‍🎨"]
+    
     var db_size: Int?
-    var wordForTranslate: String?
+    var referenceWord: String?
+    var resultString: String?
     var wordImage: String?
-    var peopleAssets = ["🧕","👮‍♀️","👷‍♀️","🕵️‍♀️","👩‍⚕️","👩‍🌾","👩‍🍳","👩‍🎓","👩‍🏫","👩‍💻","👩‍💼","👩‍🎨","👩‍🚒","👩‍✈️","👩‍🚀","👩‍⚖️","🧙‍♀️","🧛‍♀️"]
     var locale = ""
     
     override func viewDidLoad() {
@@ -43,25 +46,27 @@ class GameController: UIViewController {
     func loadSuccesView(){
         if background == nil {
             background = UIView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: 125))
-            background.backgroundColor = .green
+            background.backgroundColor = UIColor.green.withAlphaComponent(0.5)
             view.addSubview(background)
             
             let title = UILabel(frame: CGRect(x: 10, y: 5, width: 300, height: 50))
-            title.text = "Translation: \(wordForTranslate ?? "")"
+            title.text = "Translation: \(resultString ?? "")"
             title.font = UIFont.boldSystemFont(ofSize: 20)
             title.tag = 111
+            title.textColor = .systemGreen
             background.addSubview(title)
             
             let continueBtn = UIButton(frame: CGRect(x: 10, y: 55, width: UIScreen.main.bounds.width-20, height: 50))
             continueBtn.backgroundColor = .systemGreen
             continueBtn.setTitle("Continue", for: .normal)
+            continueBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
             continueBtn.setTitleColor(.white, for: .normal)
-            continueBtn.setTitleColor(.gray, for: .highlighted)
+            continueBtn.setTitleColor(.lightText, for: .highlighted)
             continueBtn.layer.cornerRadius = 10
             continueBtn.addTarget(self, action: #selector(reloadView), for: .touchUpInside)
             background.addSubview(continueBtn)
         }else{
-            (background.viewWithTag(111) as! UILabel).text = "Translation: \(wordForTranslate ?? "")"
+            (background.viewWithTag(111) as! UILabel).text = "Translation: \(resultString ?? "")"
         }
         background.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {
@@ -79,8 +84,9 @@ class GameController: UIViewController {
         })
     }
     
+    // firebase random word generator
     func getRandomWord(){
-        let randomRef = Int.random(in: 1 ..< (db_size ?? 5))
+        let randomRef = Int.random(in: 1 ... (db_size ?? 5))
         let dbRef = Database.database().reference().child(String(randomRef))
         dbRef.observeSingleEvent(of: .value, with: { (snapshot) in
             self.firCompletion(snapshot.value as? String ?? "Error")
@@ -90,25 +96,18 @@ class GameController: UIViewController {
     }
     
     func firCompletion(_ completion:String) {
-    
-        print("Random word \(completion.prefix(1))")
+        
         wordImage = String(completion.prefix(1))
-        print("Random word \(wordImage)")
         
         translate(word: String(completion.dropFirst()))
-
-        //readWord()
-        //(view.viewWithTag(111) as? UILabel)?.text = wordForTranslate
-        (view.viewWithTag(112) as? UILabel)?.text = wordImage
         
+        (view.viewWithTag(112) as? UILabel)?.text = wordImage
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
     
     @objc func readWord(){
-        let utterance = AVSpeechUtterance(string: wordForTranslate ?? "")
+        // word reading with localized voice
+        let utterance = AVSpeechUtterance(string: referenceWord ?? "")
         utterance.voice = AVSpeechSynthesisVoice(language: locale)
         let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
@@ -123,10 +122,10 @@ class GameController: UIViewController {
         tapToSpeak.frame.origin.y = 250
         tapToSpeak.setImage(UIImage(systemName: "mic.fill"), for: .normal)
         tapToSpeak.setTitleColor(.white, for: .normal)
-        tapToSpeak.setTitleColor(.gray, for: .highlighted)
+        tapToSpeak.setTitleColor(.lightGray, for: .highlighted)
         tapToSpeak.tintColor = .white
-        tapToSpeak.backgroundColor = .blue
-        tapToSpeak.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
+        tapToSpeak.backgroundColor = .systemBlue
+        tapToSpeak.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
         tapToSpeak.layer.cornerRadius = 10.0
         tapToSpeak.addTarget(self, action: #selector(speechBtnTap(_:)), for: .touchUpInside)
         
@@ -139,7 +138,11 @@ class GameController: UIViewController {
         
         
         let person = UILabel()
-        person.text = peopleAssets[Int.random(in: 0 ..< peopleAssets.count)]
+        if languageId == 1 || languageId == 12 {
+            person.text = maleAssets[Int.random(in: 0 ..< maleAssets.count)]
+        }else{
+            person.text = femaleAssets[Int.random(in: 0 ..< femaleAssets.count)]
+        }
         person.font = UIFont.systemFont(ofSize: 150)
         
         view.addSubview(person)
@@ -152,7 +155,7 @@ class GameController: UIViewController {
         wordIImageView.text = wordImage
         wordIImageView.font = UIFont.systemFont(ofSize: 100)
         wordIImageView.tag = 112
-
+        
         view.addSubview(wordIImageView)
         wordIImageView.translatesAutoresizingMaskIntoConstraints = false
         wordIImageView.leftAnchor.constraint(equalTo: tapToSpeak.centerXAnchor, constant: 0).isActive = true
@@ -160,7 +163,7 @@ class GameController: UIViewController {
         
         
         let bubble = UILabel()
-        bubble.text = self.wordForTranslate ?? ""
+        bubble.text = self.referenceWord ?? ""
         bubble.sizeToFit()
         bubble.tag = 111
         bubble.font = UIFont.boldSystemFont(ofSize: 18)
@@ -185,25 +188,26 @@ class GameController: UIViewController {
     }
     
     public func succes(){
-        tapToSpeak.backgroundColor = .blue
+        tapToSpeak.backgroundColor = .systemBlue
         loadSuccesView()
     }
     
+    // Speech Tap Btn handle
     @objc func speechBtnTap(_ sender:UIButton){
         if let back = background {
             if !back.isHidden {
                 return
             }
         }
-        
-        if tapToSpeak.backgroundColor == .blue {
-            tapToSpeak.backgroundColor = .red
-            speechRecognizer = SpeechRecognition()
-            speechRecognizer.parrentController = self
-            speechRecognizer.speecchRecognition(word: wordForTranslate!,locale: locale)
-            
+        if tapToSpeak.backgroundColor?.cgColor == UIColor.systemBlue.cgColor {
+            if let word = referenceWord {
+                tapToSpeak.backgroundColor = .systemRed
+                speechRecognizer = SpeechRecognition()
+                speechRecognizer.parrentController = self
+                speechRecognizer.speecchRecognition(word: word,locale: locale)
+            }
         }else{
-            tapToSpeak.backgroundColor = .blue
+            tapToSpeak.backgroundColor = .systemBlue
             speechRecognizer.stopRecognizing()
         }
     }

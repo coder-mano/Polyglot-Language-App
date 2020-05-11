@@ -20,7 +20,8 @@ extension GameController  {
             let translation = text!.result?.translations[0]
             DispatchQueue.main.async {
                 (self.view.viewWithTag(111) as? UILabel)?.text = translation?.translation
-                self.wordForTranslate = translation?.translation
+                self.resultString = word
+                self.referenceWord = translation?.translation
                 self.readWord()
             }
         }
@@ -45,38 +46,44 @@ extension GameController  {
         case 7:
             return "tr"
         case 8:
+            return "hu"
+        case 9:
             return "pl"
-       
+        case 10:
+            return "el"
+        case 11:
+            return "da"
+        case 12:
+            return "nl"
+        case 13:
+            return "hi"
+        case 14:
+            return "ja"
+        case 15:
+            return "pt"
+        case 16:
+            return "vi"
+        case 17:
+            return "sk"
+        case 18:
+            return "ga"
+        case 19:
+            return "he"
+        case 20:
+            return "cs"
+        case 21:
+            return "ro"
+        case 22:
+            return "id"
+            
         default:
             return "en"
         }
     }
-          
+    
     func getFlagIcon(id:Int) -> UIBarButtonItem {
-        switch id {
-        case 0:
-            return UIBarButtonItem(title: "🇪🇸", style: .plain, target: self, action: nil)
-        case 1:
-            return UIBarButtonItem(title: "🇫🇷", style: .plain, target: self, action: nil)
-        case 2:
-            return UIBarButtonItem(title: "🇧🇪", style: .plain, target: self, action: nil)
-        case 3:
-            return UIBarButtonItem(title: "🇮🇪", style: .plain, target: self, action: nil)
-        case 4:
-            return UIBarButtonItem(title: "🇸🇪", style: .plain, target: self, action: nil)
-        case 5:
-            return UIBarButtonItem(title: "🇰🇷", style: .plain, target: self, action: nil)
-        case 6:
-            return UIBarButtonItem(title: "🇷🇺", style: .plain, target: self, action: nil)
-        case 7:
-            return UIBarButtonItem(title: "🇹🇷", style: .plain, target: self, action: nil)
-        case 8:
-            return UIBarButtonItem(title: "🇵🇱", style: .plain, target: self, action: nil)
-            
-        default:
-            return UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        }
-        
+        let flags = ["🇪🇸","🇫🇷","🇧🇪","🇮🇹","🇸🇪","🇰🇷","🇷🇺","🇹🇷","🇭🇺","🇵🇱","🇬🇷","🇩🇰","🇳🇱","🇮🇳","🇯🇵","🇧🇷","🇻🇳","🇸🇰","🇮🇪","🇮🇱","🇨🇿","🇷🇴","🇮🇩"]
+        return UIBarButtonItem(title: flags[id], style: .plain, target: self, action: nil)
     }
     
 }
