@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1075805763134",
+    "firebase_url": "https://assignment-1d30b.firebaseio.com",
+    "project_id": "assignment-1d30b",
+    "storage_bucket": "assignment-1d30b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075805763134:android:96e054fea9b8c975da836f",
+        "android_client_info": {
+          "package_name": "com.example.zct"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075805763134-dkurvo0sq9tipgkqq9u58nn69b5sdaog.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq8prI2iOeB0dJ4Wg8RjWfmZFg9ixeKzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075805763134-dkurvo0sq9tipgkqq9u58nn69b5sdaog.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1075805763134-rbs6fvhen03jbder99gtkrkoetcpbosc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tomasAdam.zct.zct-assignment"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
