@@ -1,11 +1,13 @@
 
-#Android
+# Android
+
 ![Android](https://upload.wikimedia.org/wikipedia/commons/8/82/Android_logo_2019.svg)
 
-##About
+## About
+
 This application represent android solution of problem mentioned [before](https://github.com/Coder-mano/Assignment/blob/master/README.md). For this purpose we use native android technologies like *Text to speech, Speech recognition* and external technologies like *IBM Wattson translator* and *Firebase*. Application main goal is improve user skills with foreign languages not just by translating and extending his vocabulary but can help with his speech skill. 
 
-##Features
+## Features
 * Text to speech
 * Translating words from database
 * Speech recognition
@@ -19,9 +21,9 @@ This application represent android solution of problem mentioned [before](https:
 4. By tapping on nation flag you can play how you should spell the word.
 5. Button *Tap to speak* serves on recording your speech and subsequently evaluate your speech. If both words match u can proceed to next word.
 
-##Screenshots
+## Screenshots
 
-##Text to speech
+## Text to speech
 Text to speech (TTS) is native function by android which is able to transform text to playback. This function should support all languages which are included in class Locale.
 
 ```java
@@ -32,7 +34,7 @@ repeatTTS.setLanguage(Locale locale = Locale.ENGLISH);
 repeatTTS.speak(word,TextToSpeech.QUEUE_FLUSH, null, "identifier"));
 ``` 
 
-##Speech recognition
+## Speech recognition
 Speech recognition is native function provided by android, too. As in the previous case it should support all languages from Local class. Output of this function is ordered list of words which every word have confidence score.
 ```java
 //This code fragment initialize speech recognizer
