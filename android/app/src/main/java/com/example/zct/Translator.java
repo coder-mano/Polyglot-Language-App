@@ -9,7 +9,7 @@ import com.ibm.watson.language_translator.v3.model.TranslationResult;
 import java.util.List;
 
 public class Translator {
-
+//Initialize watson translator
     Helper helper = new Helper();
     public String translate(String word, String targetLanguage){
         targetLanguage = helper.iso639Handler(targetLanguage);
