@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K" alt="Bot logo"></a>
+ <img width=584px height=400px src="https://dwglogo.com/wp-content/uploads/2017/09/1460px-React_logo.png" alt="Bot logo"></a>
 </p>
 
 <h3 align="center">React Web application</h3>
@@ -37,27 +37,31 @@ This repository represents the administrator's access to the Real-Time Firebase 
 ## 💭 How it works <a name = "working"></a>
 💡We connect to the firebase database using the login function. After logging in, we can create, edit or delete individual values ​​in the database. These functions the main part of our web application.
 
-####✔️Create
-
+#### Create ✔️
+```
     Input: inserted word
     Output: saved word
- 
-####✔️Read
-    Output: all words in out database
- 
-####✔️Update 
+ ```
+#### Read ✔️
+```
+    Output: all words in our database
+ ```
+#### Update ✔️
+```
     Input: word, word.id
     Output: updated word
- 
-####✔️Delete
+ ```
+#### Delete ✔️
+```
     Input: wordId
     Output: deleted word
- 
-####✔️Login
+ ```
+#### Login ✔️
+```
     Input: userName, password
     Output: tokenKey, jwt 
- 
-####✔️Logout   
+``` 
+#### Logout ✔️
 
 ---
 
