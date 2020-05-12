@@ -1,26 +1,14 @@
 package com.example.zct;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.lang.reflect.Array;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
@@ -29,19 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private TableLayout mTableLayout;
     private String l,c;
     private String[] nationsArray = {"es", "fr", "be","it","se","kr","ru","cn","hu","pl","gr","dk","nl","iq","jp","br","vn","sk","ie","il","cz","ro","id"};
-
     Context context = this;
-    ValueEventListener listener = new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-            Log.d("tag","connection failed");
-        }
-    };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         nationNameTextView.setTextColor(Color.parseColor("#000000"));
         tr.setPadding(10,20,20,10);
         tr.addView(nationNameTextView);
+        //Click on nation in table
         tr.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 int index = (int) v.getTag();
@@ -75,17 +52,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(game);
             }
         });
-
         mTableLayout.addView(tr);
     }
-
+    //Get nation flag from locale
     public String localeToEmoji(Locale locale) {
         String countryCode = locale.getCountry();
         int firstLetter = Character.codePointAt(countryCode, 0) - 0x41 + 0x1F1E6;
         int secondLetter = Character.codePointAt(countryCode, 1) - 0x41 + 0x1F1E6;
         return new String(Character.toChars(firstLetter)) + new String(Character.toChars(secondLetter));
     }
-
+    //Get locale from string
     public Locale stringToLocale(String s) {
         StringTokenizer tempStringTokenizer = new StringTokenizer(s,",");
         if(tempStringTokenizer.hasMoreTokens())
