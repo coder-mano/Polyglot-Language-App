@@ -12,7 +12,6 @@ export async function login(userName, password) {
    fire.auth().signInWithEmailAndPassword(userName, password).then((data)=>{
      console.log(data.user);
       const jwt=data.user["xa"]
-      //const jwt2 = jwt["idToken"];
       return localStorage.setItem(tokenKey, jwt);
   }).catch((error)=>{
     console.log(error);

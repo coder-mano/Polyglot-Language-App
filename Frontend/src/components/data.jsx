@@ -38,7 +38,6 @@ class Data extends Component {
      })
     }
 
-  
     let keys = Object.keys(movies1)
     let data = Object.values(movies1)
 
@@ -50,7 +49,6 @@ class Data extends Component {
       movies= [...movies,{id,value1}]
     }
     this.setState({movies})
-    
   }
 
   handleDelete = async (movie) => {

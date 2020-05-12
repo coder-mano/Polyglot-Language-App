@@ -21,15 +21,10 @@ export async function getWords () {
 }
    
 export async function saveWord(word) {
-  console.log(word);
-  
-
+ 
   if (word.id) {
     const body = { ...word };
-    console.log(body);
     delete body.id;
-    console.log(body);
-
     return fire.database().ref().child(word.id.toString()).set(body) 
   } 
   fire.database().ref().child("db_size").once('value',snap =>{
@@ -38,11 +33,10 @@ export async function saveWord(word) {
    fire.database().ref().child("db_size").set(count)
    return fire.database().ref().child(count.toString()).set(word)
  })
- 
 }
 
-export function deleteWord(movieId) {
-    fire.database().ref().child("db_size").set(movieId-1)
-    return fire.database().ref().child(movieId).remove()
+export function deleteWord(wordId) {
+    fire.database().ref().child("db_size").set(wordId-1)
+    return fire.database().ref().child(wordId).remove()
  }
 
