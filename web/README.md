@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=584px height=400px src="https://dwglogo.com/wp-content/uploads/2017/09/1460px-React_logo.png" alt="Bot logo"></a>
+ <img width=584px height=400px src="https://dwglogo.com/wp-content/uploads/2017/09/1460px-React_logo.png" alt="React logo"></a>
 </p>
 
 <h3 align="center">React Web application</h3>
@@ -16,14 +16,14 @@
 
 ## 📝 Table of Contents
 
-- [About](#about)
-- [Demo / Working](#demo)
-- [How it works](#working)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Built Using](#built_using)
-- [Access to our database](#acces)
-- [Author](#author)
+🔗 [About](#about)
+🔗 [Demo / Working](#demo)
+🔗 [How it works](#working)
+🔗 [Getting Started](#getting_started)
+🔗 [Deployment](#deployment)
+🔗 [Built Using](#built_using)
+🔗 [Access to our database](#acces)
+🔗 [Author](#author)
 
 
 ## 🧐 About <a name = "about"></a>
@@ -44,37 +44,40 @@ This repository represents the administrator's access to the Real-Time Firebase 
     Input: inserted word
     Output: saved word
  ```
-[![Create](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/save_and_update.png)]()
+
+![Create](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/save_and_update.png?token=AFTV4LCZZVZ7BSJJ2WLQQOK6XPLJE)
+
 
 #### Read ✔️
 ```
     Output: all words in our database
  ```
- [![Read](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/read.png)]()
+ [![Read](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/read.png?token=AFTV4LD4JQCO2DU4Y3562L26XPLOG)]()
 
 #### Update ✔️
 ```
     Input: word, word.id
     Output: updated word
  ```
- [![Update](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/save_and_update.png)]()
+ [![Update](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/save_and_update.png?token=AFTV4LCZZVZ7BSJJ2WLQQOK6XPLJE)]()
 
 #### Delete ✔️
 ```
     Input: wordId
     Output: deleted word
  ```
- [![Delete](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/delete.png)]()
+ [![Delete](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/delete.png?token=AFTV4LDM565O2DTNROWCHUS6XPLD6)]()
 
 #### Login ✔️
 ```
     Input: userName, password
     Output: tokenKey, jwt 
 ``` 
-[![Login](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/login.png)]()
+[![Login](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/login.png?token=AFTV4LEOEDARMX2XAPE6IN26XPLBO)]()
 
 #### Logout ✔️
-[![Logout](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/logout.png)]()
+[![Logout](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/logout.png?token=AFTV4LCBRITM2X2KJHG3G4K6XPK5U)]()
+
 ---
 
 
@@ -82,14 +85,14 @@ This repository represents the administrator's access to the Real-Time Firebase 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-### Running Locally
+### 👷 Running Locally
 
 ```
 $ git clone https://github.com/Coder-mano/Assignment.git
 $ cd Frontend/src
 ```
 
-### Installing
+### 👷 Installing
 The generated project includes React and ReactDOM as dependencies. It also includes a set of scripts used by Create React App as a development dependency. You may install other dependencies (for example, React Router) with npm:
 ```
 npm install --save react-router
@@ -103,7 +106,7 @@ This works for any library, not just react-router.
 
 
 
-### Available Scripts
+### 👷 Available Scripts
 In the project directory, you can run:
 ```
 npm start
@@ -133,18 +136,20 @@ Note: this is a one-way operation. Once you eject, you can’t go back!
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
-- **Netlify**: https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/web
+🔗 **Netlify**:  https://zct.netlify.app/
+
+🔗 **GitHub**: https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/web
 
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [Firebase](https://console.firebase.google.com/u/0/?hl=en) - Real Time Database
-- [Netlify](https://www.netlify.com/) - SaaS hosting platform
+🔗 [Firebase](https://console.firebase.google.com/u/0/?hl=en) - Real Time Database
+🔗 [Netlify](https://www.netlify.com/) - SaaS hosting platform
 
 ## 🔐 Access to our database <a name = "access"></a>🔑
 
-    email: admin@gmail.com  
-    password: qqqqqq
+    🔑 email: admin@gmail.com  
+    🔑 password: qqqqqq
 
 
 
