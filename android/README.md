@@ -8,11 +8,10 @@
 This application represent android solution of problem mentioned [before](https://github.com/Coder-mano/Assignment/blob/master/README.md). For this purpose we use native android technologies like *Text to speech, Speech recognition* and external technologies like *IBM Wattson translator* and *Firebase*. Application main goal is improve user skills with foreign languages not just by translating and extending his vocabulary but can help with his speech skill. 
 
 ## Features
-* Text to speech
+* Text to speech 
 * Translating words from database
 * Speech recognition
 * Matching words 
-* X languages supported
 
 ## User guide
 1. Installation of application is currently available only in developer version (from IDE).
