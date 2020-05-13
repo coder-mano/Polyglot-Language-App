@@ -45,7 +45,7 @@ This repository represents the administrator's access to the Real-Time Firebase 
     Output: saved word
  ```
 
-![Create](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/save_and_update.png?token=AFTV4LCZZVZ7BSJJ2WLQQOK6XPLJE)
+[![Create](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/save_and_update.png?token=AFTV4LCZZVZ7BSJJ2WLQQOK6XPLJE)]()
 
 
 #### Read ✔️
