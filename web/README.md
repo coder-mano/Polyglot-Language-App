@@ -8,6 +8,8 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
+🔗[Link to the database](https://zct.netlify.app/login)🔗
+
 </div>
 
 ---
@@ -42,27 +44,37 @@ This repository represents the administrator's access to the Real-Time Firebase 
     Input: inserted word
     Output: saved word
  ```
+[![Create](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/save_and_update.png)]()
+
 #### Read ✔️
 ```
     Output: all words in our database
  ```
+ [![Read](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/read.png)]()
+
 #### Update ✔️
 ```
     Input: word, word.id
     Output: updated word
  ```
+ [![Update](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/save_and_update.png)]()
+
 #### Delete ✔️
 ```
     Input: wordId
     Output: deleted word
  ```
+ [![Delete](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/delete.png)]()
+
 #### Login ✔️
 ```
     Input: userName, password
     Output: tokenKey, jwt 
 ``` 
-#### Logout ✔️
+[![Login](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/login.png)]()
 
+#### Logout ✔️
+[![Logout](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/logout.png)]()
 ---
 
 
@@ -121,12 +133,13 @@ Note: this is a one-way operation. Once you eject, you can’t go back!
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
-- **Netlify**: https://github.com/Coder-mano/Assignment/tree/master/Frontend
+- **Netlify**: https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/web
+
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [Firebase](https://console.firebase.google.com/u/0/?hl=en) - Real Time Database
-- [Netlify](https://zct.netlify.app/login) - SaaS hosting platform
+- [Netlify](https://www.netlify.com/) - SaaS hosting platform
 
 ## 🔐 Access to our database <a name = "access"></a>🔑
 
@@ -134,9 +147,6 @@ Note: this is a one-way operation. Once you eject, you can’t go back!
     password: qqqqqq
 
 
-## ✍️ Author <a name = "author"></a>
-
-- [@fire2124](https://github.com/fire2124) 
 
 
 
