@@ -65,8 +65,8 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
     ValueEventListener firebaseListener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            int random = ThreadLocalRandom.current().nextInt(1, (int) (dataSnapshot.getChildrenCount()-1));
-            Log.d("number", String.valueOf(random));
+            Integer size = Integer.valueOf(dataSnapshot.child("db_size").getValue().toString());
+            int random = ThreadLocalRandom.current().nextInt(1, size);
             db_word = dataSnapshot.child(String.valueOf(random)).getValue().toString();
             word = db_word.substring(2);
             emoji = db_word.substring(0,2);
@@ -126,6 +126,8 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 repeatTTS.setLanguage(Locale.CHINESE);
             } else if (country.equals("kr")) {
                 repeatTTS.setLanguage(Locale.KOREA);
+            } else if (country.equals("ja")) {
+                repeatTTS.setLanguage(Locale.JAPAN);
             }
             Log.d("Language", repeatTTS.getLanguage().toString());
             repeatTTS.speak(word,

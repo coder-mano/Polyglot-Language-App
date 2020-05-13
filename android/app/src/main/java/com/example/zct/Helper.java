@@ -43,9 +43,6 @@ public class Helper {
             case "il":
                 newVal = "he";
                 break;
-            case "id":
-                newVal = "in";
-                break;
             default:
                 newVal = code;
                 break;
