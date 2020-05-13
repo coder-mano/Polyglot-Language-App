@@ -4,7 +4,7 @@
 
 prototype iOS implementation of the Translation Game containing Speech recognition, Firebase Realtime Database, and IBM Watson Language Translation example build in Swift 5.
 
-Supported languages: 🇪🇸 Spanish, 🇫🇷 French, 🇧🇪 German, 🇮🇹 Italian, 🇸🇪 Swedish, 🇰🇷 Korean, 🇷🇺 Russian, 🇹🇷 Turkish, 🇭🇺 Hungarian, 🇵🇱 Polish, 🇬🇷 Greek, 🇩🇰 Danish, 🇳🇱 Dutch, 🇮🇳 Hindi, 🇯🇵 Japanese, 🇧🇷 Portuguese, 🇻🇳 Vietnamese, 🇸🇰 Slovak, 🇮🇪 Irish, 🇮🇱 Hebrew, 🇨🇿 Czech, 🇷🇴 Romanian, 🇮🇩 Indonesian
+**Supported languages:** 🇪🇸 Spanish, 🇫🇷 French, 🇧🇪 German, 🇮🇹 Italian, 🇸🇪 Swedish, 🇰🇷 Korean, 🇷🇺 Russian, 🇹🇷 Turkish, 🇭🇺 Hungarian, 🇵🇱 Polish, 🇬🇷 Greek, 🇩🇰 Danish, 🇳🇱 Dutch, 🇮🇳 Hindi, 🇯🇵 Japanese, 🇧🇷 Portuguese, 🇻🇳 Vietnamese, 🇸🇰 Slovak, 🇮🇪 Irish, 🇮🇱 Hebrew, 🇨🇿 Czech, 🇷🇴 Romanian, 🇮🇩 Indonesian
 
 
 ## Implementation overview

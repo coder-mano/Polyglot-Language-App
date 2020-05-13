@@ -1,30 +1,51 @@
 
-# Android
+[![Screenshots](https://github.com/Coder-mano/Polyglot-Pronunciation-Training/blob/master/images/android.png)]()
 
-![Android](https://upload.wikimedia.org/wikipedia/commons/8/82/Android_logo_2019.svg)
+# About
 
-## About
+prototype Android implementation of the **Translation Game** containing Speech recognition, Firebase Realtime Database, and IBM Watson Language Translation example build in Java.
 
-This application represent android solution of problem mentioned [before](https://github.com/Coder-mano/Assignment/blob/master/README.md). For this purpose we use native android technologies like *Text to speech, Speech recognition* and external technologies like *IBM Wattson translator* and *Firebase*. Application main goal is improve user skills with foreign languages not just by translating and extending his vocabulary but can help with his speech skill. 
+**Supported languages:** 🇪🇸 Spanish, 🇫🇷 French, 🇧🇪 German, 🇮🇹 Italian, 🇸🇪 Swedish, 🇰🇷 Korean, 🇷🇺 Russian, 🇹🇷 Turkish, 🇭🇺 Hungarian, 🇵🇱 Polish, 🇬🇷 Greek, 🇩🇰 Danish, 🇳🇱 Dutch, 🇮🇳 Hindi, 🇯🇵 Japanese, 🇧🇷 Portuguese, 🇻🇳 Vietnamese, 🇸🇰 Slovak, 🇮🇪 Irish, 🇮🇱 Hebrew, 🇨🇿 Czech, 🇷🇴 Romanian, 🇮🇩 Indonesian
 
-## Features
-* Text to speech 
-* Translating words from database
-* Speech recognition
-* Matching words 
 
-## User guide
-1. Installation of application is currently available only in developer version (from IDE).
-2. First screen is list of languages. You can choose which language you want to learn or get translations.
-3. After selecting the language second screen will appear. This screen contains main functionality of application. You can see word image under which is translation of word.
-4. By tapping on nation flag you can play how you should spell the word.
-5. Button *Tap to speak* serves on recording your speech and subsequently evaluate your speech. If both words match u can proceed to next word.
+## Implementation overview
 
-## Screenshots
+The final implementation is divided into four main parts:
 
-## Text to speech
-Text to speech (TTS) is native function by android which is able to transform text to playback. This function should support all languages which are included in class Locale.
+* **Random word generation -** fetches the word for translation from the database based on the maximum size.
 
+* **Text to speech -** Text to speech (TTS) is a native function by android which can transform the input text into playback. This function should support all languages which are included in class Locale.
+
+* **Speech recognition -** Speech recognition is a native function provided by Android. As in the previous case, it should support all languages from the Local class. The output of this function is an ordered list of words in which every word has a confidence score.
+
+### Random word generation 
+```java
+DatabaseReference ref = database.getReference(); 
+ValueEventListener firebaseListener = new ValueEventListener() { 
+    @Override public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        //check the size of db Integer 
+        size = Integer.valueOf(dataSnapshot.child("db_size").getValue().toString()); //Generate random word from DB int random = ThreadLocalRandom.current().nextInt(1, size); 
+        db_word = dataSnapshot.child(String.valueOf(random)).getValue().toString();
+    }
+}
+``` 
+### Word translation
+```java
+public String translate(String word, String targetLanguage){ 
+    targetLanguage = helper.iso639Handler(targetLanguage); 
+    //setup translator settings (options) 
+    TranslateOptions options = new TranslateOptions.Builder().addText(word).modelId("en-"+targetLanguage).build(); 
+    TranslationResult result = languageTranslator.translate(options).execute().getResult(); 
+    //List of words from Wattson response 
+    List<Translation> translations = result.getTranslations();
+    //return best translation 
+    return translations.get(0).getTranslation();
+} 
+Translator translator = new Translator(); 
+word = translator.translate(word, country);
+``` 
+
+### Text to speech
 ```java
 //Text to english speech - word Hello
 String word = "Hello";
@@ -33,8 +54,7 @@ repeatTTS.setLanguage(Locale locale = Locale.ENGLISH);
 repeatTTS.speak(word,TextToSpeech.QUEUE_FLUSH, null, "identifier"));
 ``` 
 
-## Speech recognition
-Speech recognition is native function provided by android, too. As in the previous case it should support all languages from Local class. Output of this function is ordered list of words which every word have confidence score.
+### Speech recognition
 ```java
 //This code fragment initialize speech recognizer
 SpeechRecognizer speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
@@ -43,10 +63,18 @@ Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPE
 speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH);
 //Set listener for speach recognizer. In this case we show just succesfull case. Whole functiun have lot of states (onError, onEndOfSpeech etc.)
 speechRecognizer.setRecognitionListener(new RecognitionListener(){
-	@Override
-	public void onResults(Bundle results){
-	//There u get Bundle of reults(words) ordered by probability (Highest to lowest)
-	ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-	}
+    @Override
+    public void onResults(Bundle results){
+    //There u get Bundle of reults(words) ordered by probability (Highest to lowest)
+    ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+    }
 }
 ``` 
+
+## User guide
+1. Installation of the application is currently available only in the development version (build in Xcode Version 11.4.1 with Pixel 2  , Samsung A5, and Sony Xperia Z1 targeted to API 26 Oreo).
+
+2. The main screen represents the List of all available languages. 
+3. After selecting the language, the user is navigated to the second screen, containing the translated word with audio pronunciation.
+4. The *Tap to speak* button handles the main gamification mechanism, which allows the user to train the pronunciation and translation of different words.  
+5. In case of successful recognition, the app grants the user with completion popup and generates a new word.
