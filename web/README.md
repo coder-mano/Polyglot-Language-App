@@ -45,38 +45,38 @@ This repository represents the administrator's access to the Real-Time Firebase 
     Output: saved word
  ```
 
-[![Create](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/save_and_update.png?token=AFTV4LCZZVZ7BSJJ2WLQQOK6XPLJE)]()
+![Create](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/save_and_update.png?token=AFTV4LCZZVZ7BSJJ2WLQQOK6XPLJE)
 
 
 #### Read ✔️
 ```
     Output: all words in our database
  ```
- [![Read](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/read.png?token=AFTV4LD4JQCO2DU4Y3562L26XPLOG)]()
+ ![Read](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/read.png?token=AFTV4LD4JQCO2DU4Y3562L26XPLOG)
 
 #### Update ✔️
 ```
     Input: word, word.id
     Output: updated word
  ```
- [![Update](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/save_and_update.png?token=AFTV4LCZZVZ7BSJJ2WLQQOK6XPLJE)]()
+![Update](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/save_and_update.png?token=AFTV4LCZZVZ7BSJJ2WLQQOK6XPLJE)
 
 #### Delete ✔️
 ```
     Input: wordId
     Output: deleted word
  ```
- [![Delete](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/delete.png?token=AFTV4LDM565O2DTNROWCHUS6XPLD6)]()
+ ![Delete](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/delete.png?token=AFTV4LDM565O2DTNROWCHUS6XPLD6)
 
 #### Login ✔️
 ```
     Input: userName, password
     Output: tokenKey, jwt 
 ``` 
-[![Login](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/login.png?token=AFTV4LEOEDARMX2XAPE6IN26XPLBO)]()
+![Login](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/login.png?token=AFTV4LEOEDARMX2XAPE6IN26XPLBO)]
 
 #### Logout ✔️
-[![Logout](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/logout.png?token=AFTV4LCBRITM2X2KJHG3G4K6XPK5U)]()
+![Logout](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/logout.png?token=AFTV4LCBRITM2X2KJHG3G4K6XPK5U)
 
 ---
 
