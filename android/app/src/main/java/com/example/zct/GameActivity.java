@@ -83,7 +83,6 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        checkPermission();
         setContentView(R.layout.activity_game);
         myRef.addListenerForSingleValueEvent(firebaseListener);
         tapToSpeak = findViewById(R.id.tap_speak);
@@ -97,6 +96,7 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
         selectedLocale = stringToLocale(country);
         flagTextView.setText(localeToEmoji(selectedLocale));
         translateWord = findViewById(R.id.translate_word);
+        checkPermission();
         flagTextView.setOnClickListener(sayWord);
         repeatTTS = new TextToSpeech(this, this);
         personTextView = findViewById(R.id.person_emoji);
@@ -126,8 +126,7 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 repeatTTS.setLanguage(Locale.CHINESE);
             } else if (country.equals("kr")) {
                 repeatTTS.setLanguage(Locale.KOREA);
-            } else if (country.equals("se")) {
-                repeatTTS.setLanguage(new Locale("sv","SE"));}
+            }
             Log.d("Language", repeatTTS.getLanguage().toString());
             repeatTTS.speak(word,
                     TextToSpeech.QUEUE_FLUSH, null, "idk");

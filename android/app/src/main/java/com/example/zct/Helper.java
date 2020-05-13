@@ -1,9 +1,9 @@
 package com.example.zct;
 
 public class Helper {
+    String newVal = "";
 
     public String iso639Handler(String code){
-        String newVal;
         switch (code) {
             case "cz":
                 newVal = "cs";
