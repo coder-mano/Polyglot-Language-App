@@ -13,6 +13,9 @@ public class Translator {
     Helper helper = new Helper();
     public String translate(String word, String targetLanguage){
         targetLanguage = helper.iso639Handler(targetLanguage);
+        if (targetLanguage.equals("iw")){
+            targetLanguage = "he";
+        }
         IamAuthenticator authenticator = new IamAuthenticator("IKhWJQ2QYOap2GIH5MZijz2udr5B43NO5_rGbXy-PhUG");
         LanguageTranslator languageTranslator = new LanguageTranslator("2018-05-01", authenticator);
         languageTranslator.setServiceUrl("https://api.eu-de.language-translator.watson.cloud.ibm.com/instances/cb36a353-9d1d-40bf-a4a3-7ef300ecedb2");
