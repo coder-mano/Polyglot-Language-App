@@ -14,6 +14,8 @@ The final implementation is divided into four main parts:
 
 * **Random word generation -** fetches the word for translation from the database based on the maximum size.
 
+* **Word translation -** translates the generated word through IBM Watson to the selected language
+
 * **Text to speech -** Text to speech (TTS) is a native function by android which can transform the input text into playback. This function should support all languages which are included in class Locale.
 
 * **Speech recognition -** Speech recognition is a native function provided by Android. As in the previous case, it should support all languages from the Local class. The output of this function is an ordered list of words in which every word has a confidence score.
