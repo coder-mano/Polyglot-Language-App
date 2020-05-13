@@ -1,16 +1,16 @@
-# Polygloth - Pronunciation Training
+# Polyglot - Pronunciation Training
 
 This repository represents the solution to the assignment. The primary goal was to create two mobile applications, as an example representing the usage of multiple cloud services for translation game, with an evaluation of spoken language based on a dynamic cloud dictionary database.
 
 
-* **<a href="https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/iOS">iOS -</a>**  represents the **iOS** part of the **Translation Game** & contains the commented Swift implementation solution of the mentioned assignment.
+* **<a href="https://github.com/Coder-mano/Polyglot-Pronunciation-Training/tree/master/iOS">iOS -</a>**  represents the **iOS** part of the **Translation Game** & contains the commented Swift implementation solution of the mentioned assignment.
 
-* **<a href="https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/android">Android -</a>** represents the **Android** part of the **Translation Game** & contains the commented Java implementation solution of the mentioned assignment.
+* **<a href="https://github.com/Coder-mano/Polyglot-Pronunciation-Training/tree/master/android">Android -</a>** represents the **Android** part of the **Translation Game** & contains the commented Java implementation solution of the mentioned assignment.
 
-* **<a href="https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/web">Web -</a>** 
+* **<a href="https://github.com/Coder-mano/Polyglot-Pronunciation-Training/tree/master/web">Web -</a>** 
     represents the administrator's access to the **Real-Time Firebase Database** & contains a **React** web application for performing basic CRUD operations like Create, Read, Update, and Delete with Login and Logout.
     
-[![Scheme](https://github.com/Coder-mano/Polygloth-Pronunciation-Training/tree/master/images/scheme.png)]()
+[![Scheme](https://github.com/Coder-mano/Polyglot-Pronunciation-Training/blob/master/images/Scheme.png)]()
 ## Implementation overview
 
 In this part, we will introduce the implementation of used technologies with a small theoretical overview. The main use case represents the improvement of the user's pronunciation ability with a simple gamification aspect and image examples. The images and words for translation are stored on the cloud database, which ensures a clear way for improving the capacity of available words through web administrator without an update or any change in implementation. 
