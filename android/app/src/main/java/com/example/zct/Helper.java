@@ -1,38 +1,55 @@
 package com.example.zct;
 
 public class Helper {
+    String newVal = "";
+
     public String iso639Handler(String code){
         switch (code) {
             case "cz":
-                return "cs";
+                newVal = "cs";
+                break;
             case "be":
-                return "nl";
+                newVal = "nl";
+                break;
             case "se":
-                return "sv";
+                newVal = "sv";
+                break;
             case "kr":
-                return "ko";
+                newVal = "ko";
+                break;
             case "cn":
-                return "zh";
+                newVal = "zh";
+                break;
             case "gr":
-                return "el";
+                newVal = "el";
             case "dk":
-                return "da";
+                newVal = "da";
+                break;
             case "iq":
-                return "ar";
+                newVal = "ar";
+                break;
             case "jp":
-                return "ja";
+                newVal = "ja";
+                break;
             case "br":
-                return "pt";
+                newVal = "pt";
+                break;
             case "vn":
-                return "vi";
+                newVal = "vi";
+                break;
             case "ie":
-                return "en";
+                newVal = "en";
+                break;
             case "il":
-                return "iw";
+                newVal = "iw";
+                break;
             case "id":
-                return "in";
+                newVal = "in";
+                break;
             default:
-                return code;
+                newVal = code;
+                break;
         }
+        return newVal;
     }
 }

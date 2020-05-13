@@ -58,6 +58,7 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
     Helper helper = new Helper();
     private TextToSpeech repeatTTS;
 
+
     //Listener for firebase database
     ValueEventListener firebaseListener = new ValueEventListener() {
         @Override
@@ -81,10 +82,10 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        myRef.addValueEventListener(firebaseListener);
+        myRef.addListenerForSingleValueEvent(firebaseListener);
         tapToSpeak = findViewById(R.id.tap_speak);
         tapToSpeak.setOnClickListener(recordVoice);
-        myRef.addValueEventListener(firebaseListener);
+        myRef.addListenerForSingleValueEvent(firebaseListener);
         wordImageTextView = findViewById(R.id.emoji_word);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -135,10 +136,15 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
     }
     //Active microphone for speech recognition
     View.OnClickListener recordVoice = new View.OnClickListener() {
+
         @Override
         public void onClick(View v) {
+            try{
             speechRecognizer.startListening(speechRecognizerIntent);
-            tapToSpeak.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F23E22")));
+            tapToSpeak.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#F23E22")));}
+            catch (Exception ex){
+                System.out.println(ex);
+            }
         }
     };
     //Get nation flag from locale
@@ -224,13 +230,14 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
                     //If recognized word match given word
                     if (spokenWord.equals(word.toLowerCase())) {
                        statusTextView.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-                       statusTextView.setText("Correct");
-                       statusTextView.startAnimation(fadeIn); ;
-                        myRef.addValueEventListener(firebaseListener);
+                       statusTextView.setText("Correct 👩");
+                       statusTextView.startAnimation(fadeIn);
+                        myRef.addListenerForSingleValueEvent(firebaseListener);
                     //If doesnt recognize
                    } else {
                        statusTextView.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-                       statusTextView.startAnimation(fadeIn); ;
+                        statusTextView.setText("Incorrect \uD83D\uDE25 (Try again)");
+                        statusTextView.startAnimation(fadeIn); ;
                     }
                     statusTextView.startAnimation(fadeOut);
                 }
@@ -254,4 +261,6 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
     public void onInit(int status) {
 
     }
+
+
 }
