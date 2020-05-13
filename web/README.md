@@ -16,14 +16,14 @@
 
 ## 📝 Table of Contents
 
-🔗 [About](#about)
-🔗 [Demo / Working](#demo)
-🔗 [How it works](#working)
-🔗 [Getting Started](#getting_started)
-🔗 [Deployment](#deployment)
-🔗 [Built Using](#built_using)
-🔗 [Access to our database](#acces)
-🔗 [Author](#author)
+- [About](#about) 
+- [Demo / Working](#demo)
+- [How it works](#working)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Built Using](#built_using)
+- [Access to our database](#acces)
+- [Author](#author)
 
 
 ## 🧐 About <a name = "about"></a>
@@ -39,44 +39,135 @@ This repository represents the administrator's access to the Real-Time Firebase 
 ## 💭 How it works <a name = "working"></a>
 💡We connect to the firebase database using the login function. After logging in, we can create, edit or delete individual values ​​in the database. These functions the main part of our web application.
 
-#### Create ✔️
+
+#### ✔️ Create ✔️
+
+##### Input: inserted word
+
+```js
+export async function saveWord(word) {
+ 
+  if (word.id) {
+    const body = { ...word };
+    delete body.id;
+    return fire.database().ref().child(word.id.toString()).set(body) 
+  } 
+  fire.database().ref().child("db_size").once('value',snap =>{
+    const count=Number(snap.val())+1 
+    word = word.value;
+   fire.database().ref().child("db_size").set(count)
+   return fire.database().ref().child(count.toString()).set(word)
+ })
+}
 ```
-    Input: inserted word
-    Output: saved word
- ```
+##### Output: saved word
 
-![Create](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/save_and_update.png?token=AFTV4LCZZVZ7BSJJ2WLQQOK6XPLJE)
+---
+#### ✔️Read ✔️
+```js
+  async componentDidMount() {
+    let db_size;
+    let i;
+    let movies1=[];
+    let movies=[];
 
+   await fire.database().ref().child("db_size").once('value',snap =>{
+       db_size=snap.val();
+       return this.setState({db_size});
+    })
+    
+    for (i = 1; i <= db_size; i++) {
+      await fire.database().ref().child(i).once('value',snap =>{
+        movies1.push(snap.val())
+     })
+    }
 
-#### Read ✔️
+    let keys = Object.keys(movies1)
+    let data = Object.values(movies1)
+
+    for(let i=0; i<keys.length;i++){
+      let oldid = keys[i]
+      let score = Object.values(data[oldid])
+      let id = (parseInt(oldid)+1).toString()
+     let value1=(score)
+      movies= [...movies,{id,value1}]
+    }
+    this.setState({movies})
+  }
 ```
-    Output: all words in our database
- ```
- ![Read](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/read.png?token=AFTV4LD4JQCO2DU4Y3562L26XPLOG)
+#####    Output: all words in our database
 
-#### Update ✔️
+---
+
+#### ✔️Update ✔️
+##### Input: word
+
+
+    
+```js
+export async function saveWord(word) {
+ 
+  if (word.id) {
+    const body = { ...word };
+    delete body.id;
+    return fire.database().ref().child(word.id.toString()).set(body) 
+  } 
+  fire.database().ref().child("db_size").once('value',snap =>{
+    const count=Number(snap.val())+1 
+    word = word.value;
+   fire.database().ref().child("db_size").set(count)
+   return fire.database().ref().child(count.toString()).set(word)
+ })
+}
 ```
-    Input: word, word.id
-    Output: updated word
- ```
-![Update](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/save_and_update.png?token=AFTV4LCZZVZ7BSJJ2WLQQOK6XPLJE)
+##### Output: updated word
 
-#### Delete ✔️
+---
+
+#### ✔️ Delete ✔️
+
+##### Input: wordId
+    
+    
+```js
+export function deleteWord(wordId) {
+    fire.database().ref().child("db_size").set(wordId-1)
+    return fire.database().ref().child(wordId).remove()
+}
 ```
-    Input: wordId
-    Output: deleted word
- ```
- ![Delete](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/delete.png?token=AFTV4LDM565O2DTNROWCHUS6XPLD6)
 
-#### Login ✔️
+
+##### Output: deleted word
+
+
+
+---
+#### ✔️Login ✔️
+
+#####   Input: userName, password
+
+```js
+export async function login(userName, password) {
+   fire.auth().signInWithEmailAndPassword(userName, password).then((data)=>{
+      const jwt=data.user["xa"]
+      return localStorage.setItem(tokenKey, jwt);
+  }).catch((error)=>{
+    console.log(error);
+  })  
+}
 ```
-    Input: userName, password
-    Output: tokenKey, jwt 
-``` 
-![Login](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/login.png?token=AFTV4LEOEDARMX2XAPE6IN26XPLBO)]
+#####   Output: tokenKey, jwt  
 
-#### Logout ✔️
-![Logout](https://raw.githubusercontent.com/Coder-mano/Polygloth-Pronunciation-Training/master/images/logout.png?token=AFTV4LCBRITM2X2KJHG3G4K6XPK5U)
+
+
+---
+#### ✔️Logout ✔️
+```js
+export function logout() {
+  fire.auth().signOut();
+  localStorage.removeItem(tokenKey);
+}
+```
 
 ---
 
