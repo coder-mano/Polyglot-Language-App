@@ -20,12 +20,10 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.firebase.database.DataSnapshot;
@@ -83,7 +81,6 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        checkPermission();
         setContentView(R.layout.activity_game);
         myRef.addListenerForSingleValueEvent(firebaseListener);
         tapToSpeak = findViewById(R.id.tap_speak);
@@ -97,6 +94,7 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
         selectedLocale = stringToLocale(country);
         flagTextView.setText(localeToEmoji(selectedLocale));
         translateWord = findViewById(R.id.translate_word);
+        checkPermission();
         flagTextView.setOnClickListener(sayWord);
         repeatTTS = new TextToSpeech(this, this);
         personTextView = findViewById(R.id.person_emoji);
@@ -120,15 +118,12 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
     View.OnClickListener sayWord = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-        repeatTTS.setLanguage(stringToLocale(helper.iso639Handler(country)));
-            Log.d("selected locale", stringToLocale(helper.iso639Handler(country)).toString());
+            repeatTTS.setLanguage(stringToLocale(helper.iso639Handler(country)));
             if (country.equals("cn")){
-                repeatTTS.setLanguage(Locale.CHINESE);
+                repeatTTS.setLanguage(Locale.CHINA);
             } else if (country.equals("kr")) {
                 repeatTTS.setLanguage(Locale.KOREA);
-            } else if (country.equals("se")) {
-                repeatTTS.setLanguage(new Locale("sv","SE"));}
-            Log.d("Language", repeatTTS.getLanguage().toString());
+            }
             repeatTTS.speak(word,
                     TextToSpeech.QUEUE_FLUSH, null, "idk");
         }
@@ -164,26 +159,31 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
         StringTokenizer tempStringTokenizer = new StringTokenizer(s,",");
         if(tempStringTokenizer.hasMoreTokens())
             l = tempStringTokenizer.nextElement().toString();
-        return new Locale(l.toLowerCase(),l);
+        return new Locale(l,l.toLowerCase());
     }
 
     private void checkPermission(){
         if(!(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)== PackageManager.PERMISSION_GRANTED)){
-            ActivityCompat.requestPermissions(GameActivity.this, new String[]{Manifest.permission.RECORD_AUDIO},1 );
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package: " + getPackageName()));
+            Log.d("error", "cant load speech");
+            startActivity(intent);
         } else {
             initSpeechRecognizer();
         }
         //Internet permission
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET)
                 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(GameActivity.this, new String[]{Manifest.permission.INTERNET},2 );
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package: " + getPackageName()));
+            Log.d("error", "cant load speech");
+            startActivity(intent);
         }
     }
+
     public void initSpeechRecognizer(){
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
         speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, helper.iso639Handler(country));
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, selectedLocale);
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onReadyForSpeech(Bundle params) {
@@ -217,17 +217,15 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
             @Override
             public void onResults(Bundle results) {
                 ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-                AlphaAnimation fadeIn = new AlphaAnimation(0.0f , 1.0f );
-                AlphaAnimation fadeOut = new AlphaAnimation( 1.0f , 0.0f ) ;
-                fadeIn.setDuration(2000);
-                fadeIn.setFillAfter(true);
-                fadeOut.setDuration(2000);
-                fadeOut.setFillAfter(true);
-                fadeOut.setStartOffset(4200+fadeIn.getStartOffset());
                 if (matches != null){
-                    Log.d("u said", matches.get(0));
                    String spokenWord = matches.get(0);
-
+                   AlphaAnimation fadeIn = new AlphaAnimation(0.0f , 1.0f );
+                   AlphaAnimation fadeOut = new AlphaAnimation( 1.0f , 0.0f ) ;
+                   fadeIn.setDuration(2000);
+                   fadeIn.setFillAfter(true);
+                   fadeOut.setDuration(2000);
+                   fadeOut.setFillAfter(true);
+                   fadeOut.setStartOffset(4200+fadeIn.getStartOffset());
                     statusTextView.setVisibility(View.VISIBLE);
                     //If recognized word match given word
                     if (spokenWord.equals(word.toLowerCase())) {
@@ -239,16 +237,10 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
                    } else {
                        statusTextView.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                         statusTextView.setText("Incorrect \uD83D\uDE25 (Try again)");
-                        statusTextView.startAnimation(fadeIn);
+                        statusTextView.startAnimation(fadeIn); ;
                     }
                     statusTextView.startAnimation(fadeOut);
-                } else {
-                    statusTextView.setBackgroundTintList(ColorStateList.valueOf(Color.YELLOW));
-                    statusTextView.setText("Try again!");
-                    statusTextView.startAnimation(fadeIn);
                 }
-                statusTextView.startAnimation(fadeOut);
-
                 speechRecognizer.stopListening();
                 tapToSpeak.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2243F6")));
             }
@@ -270,30 +262,5 @@ public class GameActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case 1: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //If user presses allow
-                    initSpeechRecognizer();
-                } else {
-                    //If user presses deny
-                    Toast.makeText(GameActivity.this, "Permission denied", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            }
-            case 2: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //If user presses allow
-                } else {
-                    //If user presses deny
-                    Toast.makeText(GameActivity.this, "Internet permission denied", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    }
+
 }
